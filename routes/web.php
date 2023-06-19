@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,4 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('backend.dashboard.index');
 });
+Route::get('/dashboard/category', [CategoryController::class, 'index']);
