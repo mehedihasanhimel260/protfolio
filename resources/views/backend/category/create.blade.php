@@ -4,25 +4,25 @@
     <div class="container-fluid pt-4 px-4">
         <div class="bg-secondary text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Recent Post</h6>
-                <a href="">Show All</a>
+                <h6 class="mb-0">Create Category </h6>
+                <a href="{{ url('/dashboard/category') }}">Show All</a>
             </div>
-            <form>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
+            @if ($errors->any())
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <form action="{{ url('/dashboard/category') }}" method="POST">
+                @csrf
+                <div class="row mb-3">
+                    <label for="inputEmail3" class="col-sm-2 col-form-label">Category Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputEmail3" name="name">
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
-                <div class="mb-3 form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
+                <button type="submit" class="btn btn-primary">Save</button>
             </form>
         </div>
     </div>

@@ -23,4 +23,12 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('backend.dashboard.index');
 });
-Route::get('/dashboard/category', [CategoryController::class, 'index']);
+// Route::get('/dashboard/category', [CategoryController::class, 'index']);
+Route::prefix('/dashboard/category')->group(function () {
+    Route::get('/', [CategoryController::class, 'index']);
+    Route::get('/create', [CategoryController::class, 'create']);
+    Route::post('/', [CategoryController::class, 'store']);
+    Route::get('/edit/{id}', [CategoryController::class, 'edit']);
+    Route::post('/update/{id}', [CategoryController::class, 'update']);
+    Route::post('/delete/{id', [CategoryController::class, 'destroy']);
+});
