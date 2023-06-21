@@ -30,5 +30,5 @@ Route::prefix('/dashboard/category')->group(function () {
     Route::post('/', [CategoryController::class, 'store']);
     Route::get('/edit/{id}', [CategoryController::class, 'edit']);
     Route::post('/update/{id}', [CategoryController::class, 'update']);
-    Route::post('/delete/{id', [CategoryController::class, 'destroy']);
+    Route::get('/{id}', [CategoryController::class, 'delete']);
 });

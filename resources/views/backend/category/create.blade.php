@@ -14,6 +14,13 @@
                     @endforeach
                 </ul>
             @endif
+            @if(session()->has('success'))
+                <div id="flash-message" class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session()->get('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
+
             <form action="{{ url('/dashboard/category') }}" method="POST">
                 @csrf
                 <div class="row mb-3">

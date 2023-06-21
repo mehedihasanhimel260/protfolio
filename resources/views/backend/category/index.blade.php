@@ -6,8 +6,15 @@
                 <div class="bg-secondary text-center rounded p-4">
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         <h6 class="mb-0">Recent Post</h6>
-                        <a href="{{ url('/dashboard/category/create') }}">Show All</a>
+                        <a href="{{ url('/dashboard/category/create') }}">Create Category</a>
                     </div>
+                    
+            @if(session()->has('delete'))
+                <div id="flash-message" class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{ session()->get('delete') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
                     <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
@@ -28,6 +35,7 @@
                                     <td>{{date('F d, Y', strtotime($category->created_at)) }}</td>
                                     <td>{{ $category->name }}</td>
                                     <td> <a href="{{ url('/dashboard/category/edit/' . $category->id) }}">Edit</a></td>
+                                    <td>  <a  class="btn btn-primary" href="{{ url('/dashboard/category/' . $category->id) }}">Delete</a></td>
                                 </tr>
                                 @endforeach
                             </tbody>

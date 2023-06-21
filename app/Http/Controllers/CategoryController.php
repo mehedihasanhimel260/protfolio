@@ -34,9 +34,12 @@ class CategoryController extends Controller
     {
        //
     }
-    public function destroy()
+    public function delete($id)
     {
-       //
+        $category = category::find($id);
+        $category->delete();
+        session()->flash('delete', 'Category Deleted');
+        return redirect()->back();
     }
 
 }
