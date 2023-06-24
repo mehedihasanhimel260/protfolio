@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\dashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,13 +18,10 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::get('/', function () {
-    return view('frontend.home.index');
-});
-Route::get('/dashboard', function () {
-    return view('backend.dashboard.index');
-});
-// Route::get('/dashboard/category', [CategoryController::class, 'index']);
+
+
+Route::get('/dashboard', [dashboardController::class, 'backendindex']);
+Route::get('/', [dashboardController::class, 'frontendindex']);
 Route::prefix('/dashboard/category')->group(function () {
     Route::get('/', [CategoryController::class, 'index']);
     Route::get('/create', [CategoryController::class, 'create']);
